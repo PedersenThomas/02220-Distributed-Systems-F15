@@ -1,4 +1,5 @@
-02220-Distributed-Systems-F15
+02220 Distributed Systems F15
 =============================
 
-Author: Kim Knutzen & Thomas Pedersen
+####Authors 
+**Kim** Knutzen & **Thomas** Pedersen
