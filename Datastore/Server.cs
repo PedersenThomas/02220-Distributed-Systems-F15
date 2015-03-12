@@ -32,7 +32,7 @@ namespace Datastore
                 {
                     var line = reader.ReadLine();
                     Console.WriteLine("RAW: " + line);
-                    var message = JsonSerializer.DeSerialize(line);
+                    var message = JsonSerializer.Deserialize(line);
                     Console.WriteLine(message);
                 }
             }
