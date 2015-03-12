@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Datastore", "Datastore\Datastore.csproj", "{09A2EA0A-4643-4A50-9977-C55AACF54BC4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sensor", "Sensor\Sensor.csproj", "{E262B5FA-0157-4E62-8C41-D2D99E2CFB05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedModel", "SharedModel\SharedModel.csproj", "{86491D4E-9B69-41B1-B6B4-72E833785FCC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{09A2EA0A-4643-4A50-9977-C55AACF54BC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{09A2EA0A-4643-4A50-9977-C55AACF54BC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{09A2EA0A-4643-4A50-9977-C55AACF54BC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{09A2EA0A-4643-4A50-9977-C55AACF54BC4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E262B5FA-0157-4E62-8C41-D2D99E2CFB05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E262B5FA-0157-4E62-8C41-D2D99E2CFB05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E262B5FA-0157-4E62-8C41-D2D99E2CFB05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E262B5FA-0157-4E62-8C41-D2D99E2CFB05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{86491D4E-9B69-41B1-B6B4-72E833785FCC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{86491D4E-9B69-41B1-B6B4-72E833785FCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{86491D4E-9B69-41B1-B6B4-72E833785FCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{86491D4E-9B69-41B1-B6B4-72E833785FCC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
