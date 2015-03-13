@@ -13,6 +13,7 @@ namespace Sensor
     class Client
     {
         private TcpClient connection;
+        private StreamWriter writer;
         public Client(string address, int port)
         {
             connection = new TcpClient(address, port);
@@ -21,16 +22,13 @@ namespace Sensor
         public void Start()
         {
             var stream = connection.GetStream();
-            var writer = new StreamWriter(stream);
+            writer = new StreamWriter(stream);            
+        }
 
-            while (true)
-            {
-                var id = Console.ReadLine();
-                var message = new SensorMessage{ID = id, Status = Status.Free};
-                var buffer = JsonSerializer.Serialize(message);
-                writer.WriteLine(buffer);
-                writer.Flush();
-            }
+        public void Writeline(string message)
+        {
+            writer.WriteLine(message);
+            writer.Flush();
         }
     }
 }
