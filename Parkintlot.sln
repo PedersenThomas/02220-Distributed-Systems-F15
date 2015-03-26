@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Sensor", "Sensor\Sensor.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedModel", "SharedModel\SharedModel.csproj", "{86491D4E-9B69-41B1-B6B4-72E833785FCC}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Display", "Display\Display.csproj", "{2A8EE63A-B870-4DA0-923A-09837AD77106}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{86491D4E-9B69-41B1-B6B4-72E833785FCC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{86491D4E-9B69-41B1-B6B4-72E833785FCC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{86491D4E-9B69-41B1-B6B4-72E833785FCC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A8EE63A-B870-4DA0-923A-09837AD77106}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A8EE63A-B870-4DA0-923A-09837AD77106}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A8EE63A-B870-4DA0-923A-09837AD77106}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A8EE63A-B870-4DA0-923A-09837AD77106}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

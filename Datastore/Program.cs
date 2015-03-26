@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SharedModel;
+using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,9 +12,11 @@ namespace Datastore
     {
         static void Main(string[] args)
         {
+			var dataStore = new ConcurrentDictionary<string, Status>();
+
             int port = 12345;
             var server = new Server(port);
-            server.Start();
+            server.Start(dataStore);
             
         }
     }
