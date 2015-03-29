@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
@@ -22,7 +23,7 @@ namespace Datastore
             _listener = new TcpListener(localAddress, port);
         }
 
-        public void Start()
+        public void Start(ConcurrentDictionary<string, Status> dataStore)
         {
             _listener.Start();
             while (true)
