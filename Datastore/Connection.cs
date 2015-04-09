@@ -31,7 +31,7 @@ namespace Datastore
                 while (true)
                 {
                     var line = reader.ReadLine();
-                    var message = JsonSerializer.Deserialize(line);
+                    var message = ParkingJsonSerializer.Deserialize(line);
                     Console.WriteLine("{0} - {1}", Thread.CurrentThread.Name, message);
                 }
             }

@@ -23,7 +23,7 @@ namespace Sensor
             {
                 var id = Console.ReadLine();
                 var message = new SensorMessage { ID = id, Status = Status.Free };
-                var buffer = JsonSerializer.Serialize(message);
+                var buffer = ParkingJsonSerializer.Serialize(message);
                 client.Writeline(buffer); 
             }
         }

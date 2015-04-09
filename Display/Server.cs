@@ -31,7 +31,7 @@ namespace Display
 				while (true)
 				{
 					var line = reader.ReadLine();
-					var message = JsonSerializer.Deserialize(line);
+					var message = ParkingJsonSerializer.Deserialize(line);
 					Console.WriteLine(message);
 				}
 			}
