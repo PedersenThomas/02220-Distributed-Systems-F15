@@ -43,10 +43,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration.cs" />
-    <Compile Include="DisplayMessage.cs" />
-    <Compile Include="ParkingLotEvent.cs" />
-    <Compile Include="IMessage.cs" />
-    <Compile Include="SensorMessage.cs" />
+    <Compile Include="Messages\DisplayMessage.cs" />
+    <Compile Include="Messages\ParkingLotEvent.cs" />
+    <Compile Include="Messages\IMessage.cs" />
+    <Compile Include="Messages\ConfigurationMessage.cs" />
+    <Compile Include="Messages\SensorMessage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ParkingJsonSerializer.cs" />
     <Compile Include="Status.cs" />
