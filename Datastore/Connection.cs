@@ -37,7 +37,7 @@ namespace Datastore
                 while (true)
                 {
                     var line = reader.ReadLine();
-                    ParkingLotEvent e = ParkingJsonSerializer.DeserializeEvent(line);
+                    ParkingLotEvent e = ParkingJsonSerializer.Deserialize(line);
                     
                     if (e.Message.GetType() == typeof(RequestConfigurationMessage))
                     {
@@ -47,7 +47,7 @@ namespace Datastore
                         response.Configuration = _configurationSetup[request.id];
 
                         parkingLotEvent.Message = response;
-                        writer.WriteLine(ParkingJsonSerializer.SerializeEvent(parkingLotEvent));
+                        writer.WriteLine(ParkingJsonSerializer.Serialize(parkingLotEvent));
                         writer.Flush();
                     }
                 }
