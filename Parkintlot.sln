@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedModel", "SharedModel\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Display", "Display\Display.csproj", "{2A8EE63A-B870-4DA0-923A-09837AD77106}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedMode.UnitTestProject", "SharedMode.UnitTestProject\SharedMode.UnitTestProject.csproj", "{73EBD9F2-2728-49A4-9745-F665AC9D7BD4}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SharedModel.UnitTestProject", "SharedModel.UnitTestProject\SharedModel.UnitTestProject.csproj", "{73EBD9F2-2728-49A4-9745-F665AC9D7BD4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

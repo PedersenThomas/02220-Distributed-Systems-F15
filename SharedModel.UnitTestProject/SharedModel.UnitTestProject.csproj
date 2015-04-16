@@ -6,8 +6,8 @@
     <ProjectGuid>{73EBD9F2-2728-49A4-9745-F665AC9D7BD4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SharedMode.UnitTestProject</RootNamespace>
-    <AssemblyName>SharedMode.UnitTestProject</AssemblyName>
+    <RootNamespace>SharedModel.UnitTestProject</RootNamespace>
+    <AssemblyName>SharedModel.UnitTestProject</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
