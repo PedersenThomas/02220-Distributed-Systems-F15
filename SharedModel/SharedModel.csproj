@@ -43,6 +43,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuration.cs" />
+    <Compile Include="DeviceAddress.cs" />
     <Compile Include="Messages\DisplayMessage.cs" />
     <Compile Include="Messages\ParkingLotEvent.cs" />
     <Compile Include="Messages\IMessage.cs" />
