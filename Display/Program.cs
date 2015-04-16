@@ -13,8 +13,9 @@ namespace Display
     {
         static void Main(string[] args)
         {
+            Thread.Sleep(10);
             string host = "127.0.0.1";
-            int port = 12000;
+            int port = 12345;
             Configuration config = FetchConfiguration(host, port);
 
 
@@ -25,8 +26,8 @@ namespace Display
         {
             Client client = new Client(host, port);
             var request = new ParkingLotEvent {Message = new RequestConfigurationMessage()};
-            client.Writeline(ParkingJsonSerializer.SerializeEvent(request));
-            var response = ParkingJsonSerializer.DeserializeEvent(client.ReadLine());
+            client.Writeline(ParkingJsonSerializer.Serialize(request));
+            var response = ParkingJsonSerializer.Deserialize(client.ReadLine());
             var message = response.Message as ResponseConfigurationMessage;
             if (message != null)
             {
