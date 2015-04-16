@@ -9,15 +9,19 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using SharedModel;
+using SharedModel.Messages;
 
 namespace Datastore
 {
     public class Connection
     {
         private TcpClient _client;
-        public Connection(TcpClient client)
+        private Dictionary<string, Configuration> _configurationSetup;
+
+        public Connection(TcpClient client, Dictionary<string, Configuration> configurationSetup)
         {
             this._client = client;
+            this._configurationSetup = configurationSetup;
         }
 
         public void Start()
@@ -28,11 +32,24 @@ namespace Datastore
             {
                 var stream = _client.GetStream();
                 var reader = new StreamReader(stream);
+                var writer = new StreamWriter(stream);
+
                 while (true)
                 {
                     var line = reader.ReadLine();
-                    var message = ParkingJsonSerializer.Deserialize(line);
-                    Console.WriteLine("{0} - {1}", Thread.CurrentThread.Name, message);
+                    ParkingLotEvent e = ParkingJsonSerializer.DeserializeEvent(line);
+                    
+                    if (e.Message.GetType() == typeof(RequestConfigurationMessage))
+                    {
+                        var request = (RequestConfigurationMessage)e.Message;
+                        var response = new ResponseConfigurationMessage();
+                        var parkingLotEvent = new ParkingLotEvent();
+                        response.Configuration = _configurationSetup[request.id];
+
+                        parkingLotEvent.Message = response;
+                        writer.WriteLine(ParkingJsonSerializer.SerializeEvent(parkingLotEvent));
+                        writer.Flush();
+                    }
                 }
             }
         }

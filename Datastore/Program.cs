@@ -32,7 +32,7 @@ namespace Datastore
 
             int port = 12345;
             var server = new Server(port);
-            server.Start(dataStore);
+            server.Start(dataStore, configurationSetup);
             
         }
     }

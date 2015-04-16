@@ -23,13 +23,13 @@ namespace Datastore
             _listener = new TcpListener(localAddress, port);
         }
 
-        public void Start(ConcurrentDictionary<string, Status> dataStore)
+        public void Start(ConcurrentDictionary<string, Status> dataStore, Dictionary<string, Configuration> configurationSetup)
         {
             _listener.Start();
             while (true)
             {
                 TcpClient client = _listener.AcceptTcpClient();
-                var conn = new Connection(client);
+                var conn = new Connection(client, configurationSetup);
                 _connectionPool.Add(conn);
                 ThreadStart starter = new ThreadStart(conn.Start);
                 Thread thread = new Thread(starter); //TODO Should this be saved???
