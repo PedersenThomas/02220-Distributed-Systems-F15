@@ -5,17 +5,7 @@ namespace SharedModel
 {
     public static class ParkingJsonSerializer
     {
-        public static string Serialize(SensorMessage message)
-        {
-            return JsonConvert.SerializeObject(message);
-        }
-
-        public static SensorMessage Deserialize(string json)
-        {
-            return JsonConvert.DeserializeObject<SensorMessage>(json);
-        }
-
-        public static ParkingLotEvent DeserializeEvent(string json)
+        public static ParkingLotEvent Deserialize(string json)
         {
             return JsonConvert.DeserializeObject<ParkingLotEvent>(json, new JsonSerializerSettings
             {
@@ -24,7 +14,7 @@ namespace SharedModel
             });
         }
 
-        public static string SerializeEvent(ParkingLotEvent e)
+        public static string Serialize(ParkingLotEvent e)
         {
             return JsonConvert.SerializeObject(e, new JsonSerializerSettings
             {
