@@ -8,11 +8,16 @@ using System.Threading.Tasks;
 
 namespace Display
 {
-	class Program
-	{
-		static void Main(string[] args)
-		{
-			
-		}
-	}
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Configuration config;
+        }
+
+        private Configuration FetchConfiguration()
+        {
+            return null;
+        }
+    }
 }

@@ -8,9 +8,9 @@ using System.Threading.Tasks;
 
 namespace Datastore
 {
-	class DisplayClient
-	{
-		private TcpClient connection;
+    class DisplayClient
+    {
+        private TcpClient connection;
         private StreamWriter writer;
         public DisplayClient(string address, int port)
         {
@@ -28,5 +28,5 @@ namespace Datastore
             writer.WriteLine(message);
             writer.Flush();
         }
-	}
+    }
 }

@@ -12,7 +12,7 @@ namespace Datastore
     {
         static void Main(string[] args)
         {
-			var dataStore = new ConcurrentDictionary<string, Status>();
+            var dataStore = new ConcurrentDictionary<string, Status>();
 
             int port = 12345;
             var server = new Server(port);
