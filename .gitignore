@@ -4,3 +4,4 @@ packages/
 
 #Visual Studio files
 *.suo
+*.csproj.user
