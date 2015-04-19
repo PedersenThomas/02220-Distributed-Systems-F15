@@ -11,29 +11,24 @@ namespace Display
 {
     class Program
     {
+        private static List<Thread> ThreadPool = new List<Thread>(); 
         static void Main(string[] args)
         {
+            var ids = new List<string> { "display01", "display02", "display03" };
             Thread.Sleep(10);
-            string host = "127.0.0.1";
-            int port = 12345;
-            Configuration config = FetchConfiguration(host, port);
 
-
-            Console.ReadKey();
-        }
-
-        private static Configuration FetchConfiguration(string host, int port)
-        {
-            Client client = new Client(host, port);
-            var request = new ParkingLotEvent {Message = new RequestConfigurationMessage()};
-            client.Writeline(ParkingJsonSerializer.Serialize(request));
-            var response = ParkingJsonSerializer.Deserialize(client.ReadLine());
-            var message = response.Message as ResponseConfigurationMessage;
-            if (message != null)
+            foreach (var id in ids)
             {
-                return message.Configuration;
+                var display = new Display(id);
+                ThreadStart starter = new ThreadStart(display.Start);
+                var thread = new Thread(starter);
+                ThreadPool.Add(thread);
+
+                thread.Start();
             }
-            return null;
+
+            Console.WriteLine("Started {0} displays.", ThreadPool.Count);
+            Console.ReadKey();
         }
     }
 }
