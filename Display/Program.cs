@@ -15,13 +15,12 @@ namespace Display
         static void Main(string[] args)
         {
             var ids = new List<string> { "display01", "display02", "display03" };
-            Thread.Sleep(10);
+            Thread.Sleep(200);
 
             foreach (var id in ids)
             {
                 var display = new Display(id);
-                ThreadStart starter = new ThreadStart(display.Start);
-                var thread = new Thread(starter);
+                var thread = new Thread(display.Start);
                 ThreadPool.Add(thread);
 
                 thread.Start();

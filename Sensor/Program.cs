@@ -10,22 +10,24 @@ namespace Sensor
 {
     class Program
     {
+        private static List<Thread> ThreadPool = new List<Thread>(); 
         static void Main(string[] args)
         {
-            Thread.Sleep(100);
-            string address = "127.0.0.1";
-            int port = 12345;
-            var client = new Client(address, port);
+            var ids = new List<string> { "sensor_01", "sensor_02", "sensor_03", "sensor_04", "sensor_05", "sensor_06" };
+            Thread.Sleep(5000);
 
-            client.Start();
-
-            while (true)
+            foreach (var id in ids)
             {
-                var id = Console.ReadLine();
-                var message = new ParkingLotEvent { Message = new SensorMessage { ID = id, Status = Status.Free } }; 
-                var buffer = ParkingJsonSerializer.Serialize(message);
-                client.Writeline(buffer); 
+                Thread.Sleep(357);
+                var sensor = new Sensor(id);
+                var thread = new Thread(sensor.Start);
+                ThreadPool.Add(thread);
+
+                thread.Start();
             }
+
+            Console.WriteLine("Started {0} sensors.", ThreadPool.Count);
+            Console.ReadKey();
         }
     }
 }

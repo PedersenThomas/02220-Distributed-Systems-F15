@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
@@ -34,23 +35,50 @@ namespace Datastore
                 var reader = new StreamReader(stream);
                 var writer = new StreamWriter(stream);
 
-                while (true)
+                try
                 {
-                    var line = reader.ReadLine();
-                    ParkingLotEvent e = ParkingJsonSerializer.Deserialize(line);
-                    
-                    if (e.Message.GetType() == typeof(RequestConfigurationMessage))
+                    while (true)
                     {
-                        var request = (RequestConfigurationMessage)e.Message;
-                        var response = new ResponseConfigurationMessage();
-                        var parkingLotEvent = new ParkingLotEvent();
-                        response.Configuration = _configurationSetup[request.id];
+                        var line = reader.ReadLine();
+                        debug(line);
+                        ParkingLotEvent e = ParkingJsonSerializer.Deserialize(line);
+                    
+                        if (e.Message.GetType() == typeof(RequestConfigurationMessage))
+                        {
+                            var request = (RequestConfigurationMessage)e.Message;
+                            var response = new ResponseConfigurationMessage();
+                            var parkingLotEvent = new ParkingLotEvent();
+                            response.Configuration = _configurationSetup[request.id];
 
-                        parkingLotEvent.Message = response;
-                        writer.WriteLine(ParkingJsonSerializer.Serialize(parkingLotEvent));
-                        writer.Flush();
+                            parkingLotEvent.Message = response;
+                            writer.WriteLine(ParkingJsonSerializer.Serialize(parkingLotEvent));
+                            writer.Flush();
+                        }
+                        else if (e.Message.GetType() == typeof (SensorMessage))
+                        {
+                            Console.WriteLine(e);
+                        }
                     }
+
                 }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e);
+                    return;
+                }
+            }
+        }
+
+        private void debug(string line)
+        {
+            Debug.WriteLine(line);
+            if (line == null)
+            {
+                Debug.WriteLine("The line is null");
+            }
+            else if (String.IsNullOrWhiteSpace(line))
+            {
+                Debug.WriteLine("Line is Null or Whitespace");
             }
         }
     }

@@ -1,9 +1,10 @@
-﻿using System.IO;
+﻿using System;
+using System.IO;
 using System.Net.Sockets;
 
 namespace Display
 {
-    class Client
+    class Client : IDisposable
     {
         private TcpClient connection;
         private StreamWriter writer;
@@ -35,6 +36,14 @@ namespace Display
         public string ReadToEnd()
         {
             return reader.ReadToEnd();
+        }
+
+        public void Dispose()
+        {
+            if (connection != null)
+            {
+                connection.Close();
+            }
         }
     }
 }

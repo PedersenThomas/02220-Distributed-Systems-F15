@@ -10,6 +10,8 @@ namespace Display
 {
     public class Display
     {
+        private const string Host = "127.0.0.1";
+        private const int Port = 12345;
         public string Id { get; private set; }
 
         public Display(string id)
@@ -19,26 +21,29 @@ namespace Display
 
         public void Start()
         {
-            string host = "127.0.0.1";
-            int port = 12345;
-            Configuration config = FetchConfiguration(host, port);
-
+            Configuration config = FetchConfiguration(Host, Port);
             Console.WriteLine("Listening port:{0} Report to [{1}]", config.ListeningPort, String.Join(", ", config.ReportToNodes));
+
+            Server server = new Server(config.ListeningPort);
+            server.Start();
         }
 
         private Configuration FetchConfiguration(string host, int port)
         {
-            Client client = new Client(host, port);
-            client.Start();
-            var request = new ParkingLotEvent { Message = new RequestConfigurationMessage { id = this.Id } };
-            client.Writeline(ParkingJsonSerializer.Serialize(request));
-            var response = ParkingJsonSerializer.Deserialize(client.ReadLine());
-            var message = response.Message as ResponseConfigurationMessage;
-            if (message != null)
+            using (Client client = new Client(host, port))
             {
-                return message.Configuration;
+                client.Start();
+                var request = new ParkingLotEvent { Message = new RequestConfigurationMessage { id = this.Id } };
+                client.Writeline(ParkingJsonSerializer.Serialize(request));
+                var response = ParkingJsonSerializer.Deserialize(client.ReadLine());
+            
+                var message = response.Message as ResponseConfigurationMessage;
+                if (message != null)
+                {
+                    return message.Configuration;
+                }
+                return null;
             }
-            return null;
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using SharedModel;
+﻿using System.Collections.Generic;
+using System.Threading;
+using SharedModel;
 using System;
 using System.IO;
 using System.Net;
@@ -18,18 +20,16 @@ namespace Display
 
         public void Start()
         {
+            var threadPool = new List<Thread>();
             _listener.Start();
             while (true)
             {
-                var client = _listener.AcceptTcpClient();
-                var stream = client.GetStream();
-                var reader = new StreamReader(stream);
-                while (true)
-                {
-                    var line = reader.ReadLine();
-                    var message = ParkingJsonSerializer.Deserialize(line);
-                    Console.WriteLine(message);
-                }
+                TcpClient client = _listener.AcceptTcpClient();
+                var connection = new ServerConnection(client);
+                var thread = new Thread(connection.Start);
+                connection.Thread = thread;
+                threadPool.Add(thread);
+                thread.Start();
             }
         }
     }
