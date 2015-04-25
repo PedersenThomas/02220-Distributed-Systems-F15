@@ -18,7 +18,7 @@ namespace Program
             {"display02", new Configuration(new List<DeviceAddress>{new DeviceAddress(Localhost,9000)}, 9001)},
             {"display03", new Configuration(new List<DeviceAddress>{new DeviceAddress(Localhost,9000)}, 9002)},
                                                                                                
-            {"sensor_01", new Configuration(new List<DeviceAddress>{new DeviceAddress(Localhost,9001)}, 9100)},
+            {"sensor_01", new Configuration(new List<DeviceAddress>{new DeviceAddress(Localhost,9001), new DeviceAddress(Localhost,9002)}, 9100)},
             {"sensor_02", new Configuration(new List<DeviceAddress>{new DeviceAddress(Localhost,9001)}, 9101)},
             {"sensor_03", new Configuration(new List<DeviceAddress>{new DeviceAddress(Localhost,9001)}, 9102)},
                                                                                                

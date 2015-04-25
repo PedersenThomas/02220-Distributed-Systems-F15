@@ -13,12 +13,15 @@ namespace Program
     {
         public string Id { get; set; }
         public Status Status { get; set; }
+        public VectorClock Time { get; set; }
 
         static readonly Random Random = new Random();
 
         public Sensor(string id)
         {
             this.Id = id;
+            this.Time = new VectorClock();
+            this.Time[id] = 0;
         }
 
         public void Start()
@@ -29,18 +32,20 @@ namespace Program
 
             Console.WriteLine("Listening port:{0} Report to [{1}]", config.ListeningPort, String.Join(", ", config.ReportToNodes));
 
-
-            var dummyNode = config.ReportToNodes.First();
-            var client = new Client(dummyNode.IP, dummyNode.Port);
-            client.Start();
+            var MulticastGroup = new Multicast();
+            foreach (DeviceAddress address in config.ReportToNodes)
+            {
+                MulticastGroup.AddToGroup(address);
+            }
 
             while (true)
             {
-                this.Status = OppositeStatus(this.Status);
                 Thread.Sleep(Random.Next(9000) + 1000);
-                var e = new ParkingLotEvent { Time = DateTime.Now, Message = new SensorMessage { ID = this.Id, Status = this.Status } };
-                var message = ParkingJsonSerializer.Serialize(e);
-                client.Writeline(message);
+
+                Time[Id] += 1; 
+                this.Status = OppositeStatus(this.Status);
+                var e = new ParkingLotEvent { Time = Time, Message = new SensorMessage { ID = this.Id, Status = this.Status } };
+                MulticastGroup.Write(e);
             }
         }
 

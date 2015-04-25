@@ -48,6 +48,7 @@
     <Compile Include="ConfigurationFetcher.cs" />
     <Compile Include="Datastore.cs" />
     <Compile Include="Display.cs" />
+    <Compile Include="MultiCast.cs" />
     <Compile Include="ServerConnection\DatastoreServerConnection.cs" />
     <Compile Include="ServerConnection\DatastoreServerFactory.cs" />
     <Compile Include="ServerConnection\DisplayServerConnection.cs" />
@@ -69,6 +70,7 @@
     <Compile Include="Server.cs" />
     <Compile Include="ServerConnection\SensorServerConnection.cs" />
     <Compile Include="ServerConnection\SensorServerConnectionFactory.cs" />
+    <Compile Include="VectorClock.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

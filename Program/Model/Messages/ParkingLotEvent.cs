@@ -4,7 +4,7 @@ namespace Program.Model.Messages
 {
     public class ParkingLotEvent
     {
-        public DateTime? Time { get; set; }
+        public VectorClock Time { get; set; }
         public IMessage Message { get; set; }
 
         public override string ToString()
