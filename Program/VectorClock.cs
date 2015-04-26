@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Program
 {
@@ -27,6 +24,31 @@ namespace Program
                 return Processors[index];
             }
             set { this.Processors[index] = value; }
+        }
+
+        public override int GetHashCode()
+        {
+            if (Processors == null)
+            {
+                return 0;
+            }
+
+            int hash = 19;
+            foreach (var foo in Processors)
+            {
+                hash = hash * 31 + foo.GetHashCode();
+            }
+            return hash;
+        }
+
+        public override bool Equals(object obj)
+        {
+            var other = obj as VectorClock;
+            if (other == null)
+            {
+                return false;
+            }
+            return Processors.Count == other.Processors.Count && !Processors.Except(other.Processors).Any();
         }
 
         public override string ToString()

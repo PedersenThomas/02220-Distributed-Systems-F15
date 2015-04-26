@@ -54,9 +54,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SharedModel\SharedModel.csproj">
-      <Project>{86491d4e-9b69-41b1-b6b4-72e833785fcc}</Project>
-      <Name>SharedModel</Name>
+    <ProjectReference Include="..\Program\Program.csproj">
+      <Project>{30541952-7e44-466f-a286-941c196ea21e}</Project>
+      <Name>Program</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
