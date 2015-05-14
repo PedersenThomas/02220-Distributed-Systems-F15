@@ -14,9 +14,9 @@ namespace Program
         private const string Localhost = "127.0.0.1";
         static Dictionary<string, Configuration> configurationSetup = new Dictionary<string, Configuration>
         {
-            {"display01", new Configuration(new List<DeviceAddress>{new DeviceAddress(Localhost,12345)}, 9000)},
-            {"display02", new Configuration(new List<DeviceAddress>{new DeviceAddress(Localhost,9000)}, 9001)},
-            {"display03", new Configuration(new List<DeviceAddress>{new DeviceAddress(Localhost,9000)}, 9002)},
+            {Program.displayIds[0], new Configuration(new List<DeviceAddress>{new DeviceAddress(Localhost,12345)}, 9000)},
+            {Program.displayIds[1], new Configuration(new List<DeviceAddress>{new DeviceAddress(Localhost,9000)}, 9001)},
+            {Program.displayIds[2], new Configuration(new List<DeviceAddress>{new DeviceAddress(Localhost,9000)}, 9002)},
                                                                                                
             {"sensor_01", new Configuration(new List<DeviceAddress>{new DeviceAddress(Localhost,9001), new DeviceAddress(Localhost,9002)}, 9100)},
             {"sensor_02", new Configuration(new List<DeviceAddress>{new DeviceAddress(Localhost,9001)}, 9101)},

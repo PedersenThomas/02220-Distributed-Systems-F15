@@ -38,7 +38,13 @@ namespace Program.ServerConnection
                     while (true)
                     {
                         var line = reader.ReadLine();
-                        debug(line);
+
+                        //The Channel is disconnected.
+                        if (line == null)
+                        {
+                            _client.Close();
+                            return;
+                        }
                         ParkingLotEvent e = ParkingJsonSerializer.Deserialize(line);
                     
                         if (e.Message.GetType() == typeof(RequestConfigurationMessage))
@@ -64,19 +70,6 @@ namespace Program.ServerConnection
                     Console.WriteLine(e);
                     return;
                 }
-            }
-        }
-
-        private void debug(string line)
-        {
-            Debug.WriteLine(line);
-            if (line == null)
-            {
-                Debug.WriteLine("The line is null");
-            }
-            else if (String.IsNullOrWhiteSpace(line))
-            {
-                Debug.WriteLine("Line is Null or Whitespace");
             }
         }
     }

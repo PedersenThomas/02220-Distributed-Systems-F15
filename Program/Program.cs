@@ -13,8 +13,8 @@ namespace Program
         public const int HostPort = 12000;
 
 
-        static List<string> displayIds = new List<string> { "display01", "display02", "display03" };
-        static List<string> sensorIds = new List<string> { "sensor_01", "sensor_02", "sensor_03", "sensor_04", "sensor_05", "sensor_06" };
+        public static List<string> displayIds = new List<string> { "display01", "display02", "display03" };
+        public static List<string> sensorIds = new List<string> { "sensor_01", "sensor_02", "sensor_03", "sensor_04", "sensor_05", "sensor_06" };
         static void Main(string[] args)
         {
             Thread datastoreThread;
